@@ -21,9 +21,9 @@ void kaioKen (int cantGuerreros) {
 			if(i>j*divisor)
 				j++;
 			if(j%2 == 0){
-				cout << "B(" << pelea << "2) ";
+				cout << "2 ";
 			}else{
-				cout << "B(" << pelea << "1) ";
+				cout << "1 ";
 			}
 			i++;
 		}
@@ -32,9 +32,9 @@ void kaioKen (int cantGuerreros) {
 			if(i> j*divisor + cantGuerreros/2 )
 				j++;
 			if(j%2 == 0){
-				cout << "B(" << pelea << "1) ";
+				cout << "1 ";
 			}else{
-				cout << "B(" << pelea << "2) ";
+				cout << "2 ";
 			}
 			i++;
 		}
