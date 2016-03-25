@@ -5,7 +5,11 @@
 
 using namespace std;
 
-int main() {
-	kaioKen(18);
+int main(int n,char* args[] ) {
+	int cantidad;
+	cin>>cantidad;
+
+	kaioKen(cantidad);
+
 	return 0;
 }
