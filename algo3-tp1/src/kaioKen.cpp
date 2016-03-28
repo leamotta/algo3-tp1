@@ -13,11 +13,11 @@ void resuelveKaioKen(int cantGuerreros,int fila, int columna){
 		return;
 	}
 	int mitad = ceil(cantGuerreros/2);
-	for(int i=1;i<=cantGuerreros;i++){
-		if(i<=mitad){
-			matriz[fila][columna+i-1] = 1;
+	for(int i=0;i<cantGuerreros;i++){
+		if(i<mitad){
+			matriz[fila][columna+i] = 1;
 		}else{
-			matriz[fila][columna+i-1] = 2;
+			matriz[fila][columna+i] = 2;
 		}
 	}
 	resuelveKaioKen(mitad,fila+1,columna);
