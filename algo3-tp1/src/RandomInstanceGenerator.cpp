@@ -92,30 +92,26 @@ ej2 getEj2RandomInstance(){
 ej3 getEj3RandomInstance(){
 	ej3 instance;
 	int x, y;
-
+	instance.n = (std::rand() % 100000) + 1;
 	std::vector<int> coordX;
 	std::vector<int> coordY;
 
 	for(int i = 0; i<instance.n; i++){
 
-		/*do{
-			x=rand() % 1000000;
-		}while(contiene(coordX,x));*/
+		x=rand() % 1000000;
 		coordX.push_back(x);
 
-		/*do{
-			y=rand() % 1000000;
-		}while(contiene(coordY,y));*/
+		y=rand() % 1000000;
 		coordY.push_back(y);
 
 	}
 
 	for(int i=0;i<instance.n;i++){
-		int x;
-		int y;
-		x=coordX[i];
-		y=coordY[i];
-		pair<int,int>ei(x,y);
+		int xi;
+		int yi;
+		xi=coordX[i];
+		yi=coordY[i];
+		pair<int,int>ei(xi,yi);
 		instance.enemigos.push_back(ei);
 	}
 
