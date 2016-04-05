@@ -1,0 +1,17 @@
+#include <iostream>
+#include "RandomInstanceGenerator.h"
+
+
+int main(int n,char* args[] ) {
+
+	int x;
+	int h;
+	cin>>x>>h;
+	ej1 ejercicio1 = getEj1RandomInstance(x,h);
+
+
+  cout<<ejercicio1.n<<endl;
+
+
+	return 0;
+}
