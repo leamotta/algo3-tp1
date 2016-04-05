@@ -1,0 +1,23 @@
+#include <iostream>
+#include "RandomInstanceGenerator.h"
+#include<cstdio>
+
+
+using namespace std;
+
+
+int main(int n,char* args[] ) {
+
+	int x;
+	int h;
+	cin>>x>>h;
+	ej3 ejercicio3 = getEj3RandomInstance(x,h);
+
+
+	for(int i=0; i<ejercicio3.n;i++){
+		cout<<ejercicio3.enemigos[i].first<< " "<<ejercicio3.enemigos[i].second<<endl;
+	}
+
+
+	return 0;
+}
