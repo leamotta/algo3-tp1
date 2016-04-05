@@ -2,6 +2,16 @@
 int **matriz;
 using namespace std;
 
+
+int main(){
+	int cantidad;
+	cin>>cantidad;
+
+	kaioKen(cantidad);
+	
+	return 0;
+}
+
 void resuelveKaioKen(int cantGuerreros,int fila, int columna){
 	if(cantGuerreros == 1){
 		matriz[fila][columna] = 1;

@@ -6,6 +6,25 @@
 using namespace aed3;
 using std::cout;
 
+
+int main(int n,char* args[] ) {
+	int N;
+	int T;
+	cin>>N>>T;
+	vector<pair<int,int> > enemigos;
+
+	for(int i=0;i<N;i++){
+		int x;
+		int y;
+		cin>>x>>y;
+		pair<int,int>ei(x,y);
+		enemigos.push_back(ei);
+	}
+	
+	genkidama(N,T,enemigos);
+	return 0;
+}
+
 void genkidama(int N,int T,vector<pair<int,int> > enemigos){
 	int genkidamas=0;
 	int i=0;
