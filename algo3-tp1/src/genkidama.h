@@ -4,6 +4,9 @@
 #include <math.h>
 #include <list>
 #include <vector>
+#include <iostream>
+#include <sstream>
+
 using namespace std;
 
 void genkidama(int N,int T,vector<pair<int,int> > enemigos);

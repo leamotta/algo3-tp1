@@ -1,11 +1,5 @@
 #include "genkidama.h"
-#include "Lista.h"
-#include <iostream>
-
-
-using namespace aed3;
-using std::cout;
-
+using namespace std;
 
 int main(int n,char* args[] ) {
 	int N;
