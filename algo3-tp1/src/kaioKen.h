@@ -3,6 +3,8 @@
 
 #include <stdio.h>
 #include <math.h>
+#include <iostream>
+#include <sstream>
 
 void kaioKen (int cantGuerreros);
 
