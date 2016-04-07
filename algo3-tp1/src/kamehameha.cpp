@@ -11,7 +11,7 @@ vector<Enemigo> enemigosSolucion;
 void resolverKamehameha(vector<Enemigo> ene){
 	enemigos = ene;
 	ENEMIGOS_VIVOS = ene.size();
-	resolverKamehamehaaux();
+	resolverKamehamehaAux();
     printf("%d\n", KAMEHAMEHAS_OPTIMOS);
     vector<string> enemigosEnLinea(KAMEHAMEHAS_OPTIMOS);
     vector<int> cantEnemigosEnLinea(KAMEHAMEHAS_OPTIMOS);
@@ -25,7 +25,7 @@ void resolverKamehameha(vector<Enemigo> ene){
     }
 }
 
-void resolverKamehamehaaux(){
+void resolverKamehamehaAux(){
     if(ENEMIGOS_VIVOS == 0){
     	KAMEHAMEHAS_OPTIMOS = KAMEHAMEHA_NUMERO;//solucion optima actual
         enemigosSolucion.clear();
@@ -36,7 +36,7 @@ void resolverKamehamehaaux(){
             for(vector<Enemigo>::iterator it = enemigos.begin(); it != enemigos.end(); it++){
                 if(!it->Muerto()){
                     ENEMIGOS_VIVOS -= matar(&(*it));
-                    resolverKamehamehaaux();
+                    resolverKamehamehaAux();
                     ENEMIGOS_VIVOS += revivir(&(*it));
                 }
             }
@@ -50,7 +50,7 @@ void resolverKamehamehaaux(){
                         if(it != it2){ //Poda: queremos encontrar una linea entre dos enemigos distintos
                             if(KAMEHAMEHA_NUMERO + 1 < KAMEHAMEHAS_OPTIMOS){//no sigo probando con soluciones que como mejor caso son iguales a la que ya tengo
                                 ENEMIGOS_VIVOS -= matar(&(*it),&(*it2));
-                                resolverKamehamehaaux();
+                                resolverKamehamehaAux();
                                 ENEMIGOS_VIVOS += revivir(&(*it),&(*it2));
                             }
                         }

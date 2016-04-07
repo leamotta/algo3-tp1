@@ -14,7 +14,7 @@ using namespace std;
 
 
 void resolverKamehameha(vector<Enemigo> enemigos);
-void resolverKamehamehaaux();
+void resolverKamehamehaAux();
 int matar(Enemigo* a, Enemigo* b);
 int matar(Enemigo* a);
 int revivir(Enemigo* a, Enemigo* b);
