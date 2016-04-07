@@ -11,13 +11,10 @@
 
 using namespace std;
 
-int KAMEHAMEHAS_OPTIMOS = numeric_limits<int>::max();
-int KAMEHAMEHA_NUMERO = 0;
-int ENEMIGOS_VIVOS;
-vector<Enemigo> enemigos;
-vector<Enemigo> enemigosSolucion;
 
-void resolverKamehameha();
+
+void resolverKamehameha(vector<Enemigo> enemigos);
+void resolverKamehamehaaux();
 int matar(Enemigo* a, Enemigo* b);
 int matar(Enemigo* a);
 int revivir(Enemigo* a, Enemigo* b);
