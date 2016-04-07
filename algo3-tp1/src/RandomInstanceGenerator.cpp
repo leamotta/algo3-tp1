@@ -6,8 +6,13 @@
  */
 
 #include "RandomInstanceGenerator.h"
+#include "Enemigo.h"
 
 using namespace std;
+
+int myRand(){
+	return rand()%1000 + (rand()%1000)*1000 + (rand()%1000)*1000000;
+}
 
 void insertionSort(std::vector<int>& v){
 	for(int i = 1; i< v.size(); i++){
@@ -42,15 +47,16 @@ bool contiene(const std::vector<int>& v, int x){
 	return false;
 }
 
-ej1 getEj1RandomInstance(){
+ej1 getEj1RandomInstance(int n, int h){
 	ej1 instance;
-	instance.n = std::rand() % 10000;
+	instance.n=n;
 	return instance;
 }
 
-ej2 getEj2RandomInstance(){
+ej2 getEj2RandomInstance(int n, int h){
 	ej2 instance;
-	instance.n = (std::rand() % 100000) + 1;
+	std::srand(h);
+	instance.n = n;
 	int maxT;
 	int x, y;
 
@@ -58,16 +64,16 @@ ej2 getEj2RandomInstance(){
 	std::vector<int> coordY;
 
 	for(int i = 0; i<instance.n; i++){
-
 		do{
-			x=rand() % 1000000;
+			x=myRand() % 1000000000;
 		}while(contiene(coordX,x));
 		coordX.push_back(x);
 
 		do{
-			y=rand() % 1000000;
+			y=myRand() % 1000000000;
 		}while(contiene(coordY,y));
 		coordY.push_back(y);
+
 
 	}
 
@@ -83,25 +89,26 @@ ej2 getEj2RandomInstance(){
 		x=coordX[i];
 		y=coordY[i];
 		pair<int,int>ei(x,y);
-		instance.enemigos.push_back(ei);
+		instance.enemies.push_back(ei);
 	}
 
 	return instance;
 }
 
-ej3 getEj3RandomInstance(){
+ej3 getEj3RandomInstance(int n, int h){
 	ej3 instance;
+	std::srand(h);
 	int x, y;
-	instance.n = (std::rand() % 100000) + 1;
+	instance.n = n;
 	std::vector<int> coordX;
 	std::vector<int> coordY;
 
 	for(int i = 0; i<instance.n; i++){
 
-		x=rand() % 1000000;
+		x=myRand() % 1000000;
 		coordX.push_back(x);
 
-		y=rand() % 1000000;
+		y=myRand() % 1000000;
 		coordY.push_back(y);
 
 	}
@@ -111,8 +118,8 @@ ej3 getEj3RandomInstance(){
 		int yi;
 		xi=coordX[i];
 		yi=coordY[i];
-		pair<int,int>ei(xi,yi);
-		instance.enemigos.push_back(ei);
+		Enemigo ei(xi,yi,i);
+		instance.enemies.push_back(ei);
 	}
 
 	return instance;
