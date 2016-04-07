@@ -1,17 +1,17 @@
 #include "kamehameha.h"
-#include "Enemigo.h"
 using namespace std;
 
-int main(){
-    int n;
-    cin >> n;
-    ENEMIGOS_VIVOS = n;
-    for(int i=1; i <= n; i++){
-        int x,y;
-        cin >> x >> y;
-        enemigos.push_back(Enemigo(x,y,i));
-    }
-    resolverKamehameha();
+int KAMEHAMEHAS_OPTIMOS = numeric_limits<int>::max();
+int KAMEHAMEHA_NUMERO = 0;
+int ENEMIGOS_VIVOS;
+vector<Enemigo> enemigos;
+vector<Enemigo> enemigosSolucion;
+
+
+void resolverKamehameha(vector<Enemigo> ene){
+	enemigos = ene;
+	ENEMIGOS_VIVOS = ene.size();
+	resolverKamehamehaaux();
     printf("%d\n", KAMEHAMEHAS_OPTIMOS);
     vector<string> enemigosEnLinea(KAMEHAMEHAS_OPTIMOS);
     vector<int> cantEnemigosEnLinea(KAMEHAMEHAS_OPTIMOS);
@@ -23,10 +23,9 @@ int main(){
     for(int i=0; i < (int)enemigosEnLinea.size(); i++){
         printf("%d %s\n",cantEnemigosEnLinea[i],enemigosEnLinea[i].c_str());
     }
-    return 0;
 }
 
-void resolverKamehameha(){
+void resolverKamehamehaaux(){
     if(ENEMIGOS_VIVOS == 0){
     	KAMEHAMEHAS_OPTIMOS = KAMEHAMEHA_NUMERO;//solucion optima actual
         enemigosSolucion.clear();
@@ -37,7 +36,7 @@ void resolverKamehameha(){
             for(vector<Enemigo>::iterator it = enemigos.begin(); it != enemigos.end(); it++){
                 if(!it->Muerto()){
                     ENEMIGOS_VIVOS -= matar(&(*it));
-                    resolverKamehameha();
+                    resolverKamehamehaaux();
                     ENEMIGOS_VIVOS += revivir(&(*it));
                 }
             }
@@ -51,7 +50,7 @@ void resolverKamehameha(){
                         if(it != it2){ //Poda: queremos encontrar una linea entre dos enemigos distintos
                             if(KAMEHAMEHA_NUMERO + 1 < KAMEHAMEHAS_OPTIMOS){//no sigo probando con soluciones que como mejor caso son iguales a la que ya tengo
                                 ENEMIGOS_VIVOS -= matar(&(*it),&(*it2));
-                                resolverKamehameha();
+                                resolverKamehamehaaux();
                                 ENEMIGOS_VIVOS += revivir(&(*it),&(*it2));
                             }
                         }
