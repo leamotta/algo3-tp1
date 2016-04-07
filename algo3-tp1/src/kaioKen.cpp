@@ -36,15 +36,19 @@ void resuelveKaioKen(int cantGuerreros,int fila, int columna){
 
 void kaioKen (int cantGuerreros) {
 
-	matriz = new int*[(int) ceil(log2(cantGuerreros))];
+	int iteraciones = (int) ceil(log2(cantGuerreros));
+	matriz = new int*[iteraciones];
 
-	for(int i=0;i<(int) ceil(log2(cantGuerreros));i++){
-		matriz[i] = new int[cantGuerreros];
-	}
+	for(int i=0;i<iteraciones;i++){ //O(log n)
+		matriz[i] = new int[cantGuerreros]; //O(n)
+		for(int j=0; j< cantGuerreros; j++){ //O(n)
+			matriz[i][j] = 1;
+		}
+	}//O(log n * 2n) = O(log n * n) = O(n log n)
 
 	resuelveKaioKen(cantGuerreros,0,0);
-	printf("%d\n",(int) ceil(log2(cantGuerreros)));
-	for(int i=0;i<ceil(log2(cantGuerreros));i++){
+	printf("%d\n",iteraciones);
+	for(int i=0; i < iteraciones; i++){
 		for(int j=0;j<cantGuerreros;j++){
 			if(matriz[i][j]){
 				printf("%d ",matriz[i][j]);
@@ -52,6 +56,8 @@ void kaioKen (int cantGuerreros) {
 				printf("%d ",1);
 			}
 		}
+		delete[] matriz[i];
 		printf("\n");
 	}
+	delete[] matriz;
 }
