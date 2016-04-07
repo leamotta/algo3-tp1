@@ -24,8 +24,8 @@ void genkidama(int N,int T,vector<pair<int,int> > enemigos){
 	int i=0;
 	list<int> disparados;
 	while (i<N) {
-		int disparado=masLejanoQueMeMata(i,N,T,enemigos);
-	    i = masLejanoQueMato(disparado,N,T,enemigos) + 1;
+		int disparado=masLejanoQueMeMata(i,N,T,enemigos); //Obtengo la posición más lejana en donde hay que poner la iesima genkidama
+	    i = masLejanoQueMato(disparado,N,T,enemigos); //La iteracion sigue a partir del siguiente que aun no fue alcazando por una genkidama
 
 	    disparados.push_back(disparado+1); //el 0 de la lista es el enemigo 1 y asi sucesivamente
 	    genkidamas++;
@@ -48,12 +48,13 @@ int masLejanoQueMeMata(int aMatar,int N, int T,vector<pair<int,int> > &enemigos)
 
 int masLejanoQueMato(int disparado, int N,int T, vector<pair<int,int> > &enemigos){
   int j=disparado+1;
-  while(loMata(disparado,j,N,T,enemigos)){//mato al siguiente?
+  while(loMata(disparado,j,N,T,enemigos)){//Incremento j a medida que sigue matando enemigos
     j++;
   }
-  return j-1;//devuelvo ultimo que mato
+  return j;//devuelvo ultimo que mato
 }
 
 bool loMata(int i,int j,int N,int T,vector<pair<int,int> > &enemigos){//mata i al j?
+	//Chequea si al tirar la genkidama al enemigo i, el j también es alcanzado
   return enemigos[i].first + T >= enemigos[j].first && enemigos[i].second + T >= enemigos[j].second;
 }
