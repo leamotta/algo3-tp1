@@ -48,11 +48,13 @@ void resolverKamehamehaAux(){
                 for(vector<Enemigo>::iterator it2 = enemigos.begin(); it2 != enemigos.end(); it2++){//O(N)
                     if(!it2->Muerto()){ //Poda: no es conveniente matar muertos
                         if(it != it2){ //Poda: queremos encontrar una linea entre dos enemigos distintos
-                            if(KAMEHAMEHA_NUMERO + 1 < KAMEHAMEHAS_OPTIMOS){//no sigo probando con soluciones que como mejor caso son iguales a la que ya tengo
-                                ENEMIGOS_VIVOS -= matar(&(*it),&(*it2));
-                                resolverKamehamehaAux();
-                                ENEMIGOS_VIVOS += revivir(&(*it),&(*it2));
-                            }
+                        	if(it->Numero() > it2->Numero()){ //Ya habiamos unido estos puntos antes cuando it2 era it y viceversa
+								if(KAMEHAMEHA_NUMERO + 1 < KAMEHAMEHAS_OPTIMOS){//no sigo probando con soluciones que como mejor caso son iguales a la que ya tengo
+									ENEMIGOS_VIVOS -= matar(&(*it),&(*it2));
+									resolverKamehamehaAux();
+									ENEMIGOS_VIVOS += revivir(&(*it),&(*it2));
+								}
+                        	}
                         }
                     }
                 }
