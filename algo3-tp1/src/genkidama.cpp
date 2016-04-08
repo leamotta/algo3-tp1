@@ -41,7 +41,7 @@ void genkidama(int N,int T,vector<pair<int,int> > enemigos){
 
 int masLejanoQueMeMata(int aMatar,int N, int T,vector<pair<int,int> > &enemigos){
     int j=aMatar+1;
-    while(loMata(j,aMatar,N,T,enemigos)){//me mata el siguiente?
+    while(loMata(j,aMatar,N,T,enemigos) && j<N){//me mata el siguiente?
       j++;
     }
     return j-1;//devuelvo ultimo que me mata
@@ -49,7 +49,7 @@ int masLejanoQueMeMata(int aMatar,int N, int T,vector<pair<int,int> > &enemigos)
 
 int masLejanoQueMato(int disparado, int N,int T, vector<pair<int,int> > &enemigos){
   int j=disparado+1;
-  while(loMata(disparado,j,N,T,enemigos)){//Incremento j a medida que sigue matando enemigos
+  while(loMata(disparado,j,N,T,enemigos) && j<N){//Incremento j a medida que sigue matando enemigos
     j++;
   }
   return j;//devuelvo ultimo que mato
