@@ -1,4 +1,5 @@
 #include "kaioKen.h"
+#include <iostream>
 int **matriz;
 using namespace std;
 
